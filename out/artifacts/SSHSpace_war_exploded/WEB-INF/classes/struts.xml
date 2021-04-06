@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!--	<package name="hellow" namespace="/edwin" extends="struts-default">-->
+<!--		<action name="index" class="com.tentact.action.IndexAction">-->
+<!--			<result name="success" type="dispatcher">/jsp/welcome.jsp</result>-->
+<!--		</action>-->
+<!--		<action name="hello" class="com.tentact.action.HellowWorldAction">-->
+<!--			<result name="success" type="dispatcher">/jsp/hello.jsp</result>-->
+<!--		</action>-->
+<!--	</package>-->
+<!--	package是struts管理模块的单元，name必须有，方便继承，方便管理，可自定义namespace为访问路径前缀，默认是/-->
+<!--	extends继承-->
+	<package name="hello" extends="struts-default">
+<!--		访问路径-->
+		<action name="hello">
+			<result>/WEB-INF/jsp/login.jsp</result>
+		</action>
+		<action name="registerPage">
+			<result>/WEB-INF/jsp/register.jsp</result>
+		</action>
+	</package>
+	<package name="user" extends="struts-default" namespace="/user">
+<!--		此处的first为访问路径-->
+		<action name="login" class="com.alex.action.UserAction">
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="fail">/WEB-INF/jsp/login.jsp</result>
+		</action>
+		<action name="register" class="com.alex.action.UserAction" method="register">
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="haveNull">/WEB-INF/jsp/login.jsp</result>
+			<result name="alreadyRegistered">/WEB-INF/jsp/error.jsp</result>
+		</action>
+	</package>
+</struts>
