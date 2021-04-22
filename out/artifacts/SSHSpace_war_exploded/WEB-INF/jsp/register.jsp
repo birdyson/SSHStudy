@@ -11,8 +11,9 @@
     <title>注册</title>
 </head>
 <body>
+<font color="red">${msg}</font>
 <h3>注册</h3>
-<form action="user/register">
+<form action="/user/register">
     <label>
         用户名：
         <input type="text" name="username">

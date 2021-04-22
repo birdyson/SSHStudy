@@ -1,34 +1,20 @@
-<%@ page import="com.alex.service.UserService" %>
-<%@ page import="com.alex.vo.User" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>你好</title>
 </head>
 <body>
-你好！
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>用户名</th>
-        <th>密码</th>
-    </tr>
 
-<%
-    UserService userService = new UserService();
-    List<User> allUser = userService.getAllUser();
-    for (User u :
-            allUser) {
-%>
-    <tr>
-        <td><%=u.getId()%></td>
-        <td><%=u.getUsername()%></td>
-        <td><%=u.getPassword()%></td>
-    </tr>
-<%
-    }
-%>
-</table>
+<h4>你好！${username}!</h4>
+<a href="/user/findAll"><button>用户注册表</button></a>
+<a href="/user/delete"><button>注销</button></a>
+<a href="/user/update"><button>修改密码</button></a><br>
+<form action="/user/find">
+    <label for="findUsername">用户名字查询</label>
+    <input type="text" name="findUsername" id="findUsername">
+    <input type="submit" value="查询">
+</form>
+
+
 </body>
 </html>

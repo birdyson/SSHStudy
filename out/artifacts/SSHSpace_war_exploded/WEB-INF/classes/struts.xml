@@ -21,17 +21,46 @@
 		<action name="registerPage">
 			<result>/WEB-INF/jsp/register.jsp</result>
 		</action>
+		<action name="list">
+			<result>/WEB-INF/jsp/list.jsp</result>
+		</action>
+		<action name="update">
+			<result>/WEB-INF/jsp/userinfo.jsp</result>
+		</action>
 	</package>
 	<package name="user" extends="struts-default" namespace="/user">
-<!--		此处的first为访问路径-->
-		<action name="login" class="com.alex.action.UserAction">
+		<action name="login" class="com.alex.action.UserAction" method="login">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
 			<result name="fail">/WEB-INF/jsp/login.jsp</result>
 		</action>
 		<action name="register" class="com.alex.action.UserAction" method="register">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
-			<result name="haveNull">/WEB-INF/jsp/login.jsp</result>
-			<result name="alreadyRegistered">/WEB-INF/jsp/error.jsp</result>
+			<result name="fail">/WEB-INF/jsp/register.jsp</result>
+		</action>
+		<action name="findAllForward" class="com.alex.action.UserAction" method="findAll">
+			<result name="success">/WEB-INF/jsp/list.jsp</result>
+		</action>
+		<action name="findAll" class="com.alex.action.UserAction" method="findAll">
+<!--			<result name="success" type="redirectAction">findAllForward</result>-->
+			<result name="success">/WEB-INF/jsp/list.jsp</result>
+		</action>
+		<action name="find" class="com.alex.action.UserAction" method="find">
+			<result name="success">/WEB-INF/jsp/list.jsp</result>
+		</action>
+		<action name="delete" class="com.alex.action.UserAction" method="delete">
+			<result name="success" type="redirectAction">findAll</result>
+			<result name="fail">/WEB-INF/jsp/error.jsp</result>
+		</action>
+<!--		<action name="delete" class="com.alex.action.InfoAction" method="delete">-->
+<!--			<result name="success">/WEB-INF/jsp/login.jsp</result>-->
+<!--			<result name="fail">/WEB-INF/jsp/error.jsp</result>-->
+<!--		</action>-->
+		<action name="update" class="com.alex.action.UserAction" method="update">
+			<result name="success" type="redirectAction">findAll</result>
+			<result name="fail">/WEB-INF/jsp/error.jsp</result>
+		</action>
+		<action name="updateForward" class="com.alex.action.UserAction" method="updateForward">
+			<result name="success">/WEB-INF/jsp/userinfo.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -4,6 +4,12 @@
     <title>出错啦！</title>
 </head>
 <body>
-    <%="您输入的用户名已被注册！"%>
+    <%
+        if (session.getAttribute("username") == null){
+            response.sendRedirect("hello/hello");
+        }
+        System.err.println("出现错误Error！");
+    %>
+    <%="出错了！"%>
 </body>
 </html>
