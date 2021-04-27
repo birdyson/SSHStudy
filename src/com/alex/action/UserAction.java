@@ -55,10 +55,10 @@ public class UserAction {
                 session.setAttribute("username", username);
                 return "success";
             case -1:
-                request.setAttribute("msg", "用户名已存在！");
+                request.setAttribute("error", "用户名已存在！");
                 return "fail";
             default:
-                request.setAttribute("msg", "请输入完整用户名或密码！");
+                request.setAttribute("error", "请输入完整用户名或密码！");
                 return "fail";
         }
     }
@@ -67,6 +67,13 @@ public class UserAction {
         UserService userService = new UserService();
         List<User> allUser = userService.getAllUser();
         request.setAttribute("userlist", allUser);
+        return "success";
+    }
+    public String logout(){
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        session.removeAttribute("username");
+        request.setAttribute("error", "您已退出登录。");
         return "success";
     }
     public String delete(){
@@ -90,6 +97,7 @@ public class UserAction {
         if (b){
             return "success";
         }
+        request.setAttribute("error", "用户名重复！");
         return "fail";
     }
     public String updateForward(){

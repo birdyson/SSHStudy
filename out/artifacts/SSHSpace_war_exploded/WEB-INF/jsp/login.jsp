@@ -4,7 +4,7 @@
     <title>请登录</title>
 </head>
 <body>
-<font color="red">${msg}</font>
+<p style="color: red; font-weight: bolder">${error}</p>
 <form action="/user/login">
     <h3>登录</h3>
     <label>

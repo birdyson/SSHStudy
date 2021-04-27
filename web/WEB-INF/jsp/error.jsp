@@ -4,12 +4,12 @@
     <title>出错啦！</title>
 </head>
 <body>
-    <%
+<%--    <%
         if (session.getAttribute("username") == null){
             response.sendRedirect("hello/hello");
         }
-        System.err.println("出现错误Error！");
-    %>
-    <%="出错了！"%>
+    %>--%>
+    <p style="color:red; font-weight: bolder">${error}</p>
+<jsp:include page="template.jsp"/>
 </body>
 </html>
